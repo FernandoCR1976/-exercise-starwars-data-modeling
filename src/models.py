@@ -8,20 +8,21 @@ from eralchemy import render_er
 
 Base = declarative_base()
 
-class User(Base):
-    __tablename__ = 'user'
-    id = Column(Integer, primary_key=True)
-    user_name = Column(String(50), nullable=False)
-    user_name = Column(String(50))
-    email = Column(String(50))
-    user_Fav = relationship(User_Fav)
+
 
 class User_Fav(Base):
     __tablename__ = 'user_Fav'
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('user.id'))
     name = Column(String(50))
-    
+
+class User(Base):
+    __tablename__ = 'user'
+    id = Column(Integer, primary_key=True)
+    user_name = Column(String(50), nullable=False)
+    user_name = Column(String(50))
+    email = Column(String(50))
+    user_Fav = relationship(User_Fav)    
 
 class Planet(Base):
     __tablename__ = 'planet'
