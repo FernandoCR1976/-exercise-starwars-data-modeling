@@ -14,15 +14,14 @@ class User(Base):
     user_name = Column(String(50), nullable=False)
     user_name = Column(String(50))
     email = Column(String(50))
+    user_Fav = relationship(User_Fav)
 
 class User_Fav(Base):
     __tablename__ = 'user_Fav'
-    id = Column(Integer, ForeignKey('user.id'), primary_key=True)
-    user_id = Column(Integer)
-    person_id = Column(Integer, ForeignKey('people.id'), nullable=True)
-    planet_id = Column(Integer, ForeignKey('planet.id'), nullable=True)
-    vehicle_id = Column(Integer, ForeignKey('vehicles.id'), nullable=True)
-    user = relationship(User)
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey('user.id'))
+    name = Column(String(50))
+    
 
 class Planet(Base):
     __tablename__ = 'planet'
